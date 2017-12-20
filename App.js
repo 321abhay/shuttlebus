@@ -12,26 +12,24 @@ import {
   View
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import MapView from 'react-native-maps'
+import { PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps';
 
 export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <MapView
+        provider = {PROVIDER_DEFAULT}
+        style={styles.map}
+        showsBuildings={true}
+        initalRegion={{
+          latitude: 1.348310,
+          longitude: 103.683135,
+          latitudeDelta: 0.00922,
+          longitudeDelta: 0.0421,
+        }}
+      />
       </View>
     );
   }
@@ -43,6 +41,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  map: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    position: 'absolute',
   },
   welcome: {
     fontSize: 20,
