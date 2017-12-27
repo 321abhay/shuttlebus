@@ -9,11 +9,21 @@ import {
   Platform,
   StyleSheet,
   Text,
+  Dimensions,
+  TouchableOpacity,
   View
 } from 'react-native';
 
 import MapView from 'react-native-maps'
 import { PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps';
+
+const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE = 37.78825;
+const LONGITUDE = -122.4324;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class App extends Component<{}> {
   render() {
@@ -24,12 +34,13 @@ export default class App extends Component<{}> {
         style={styles.map}
         showsBuildings={true}
         initalRegion={{
-          latitude: 1.348310,
-          longitude: 103.683135,
-          latitudeDelta: 0.00922,
-          longitudeDelta: 0.0421,
-        }}
-      />
+          latitude: LATITUDE,
+          longitude: LONGITUDE,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }}>
+
+        </MapView>
       </View>
     );
   }
