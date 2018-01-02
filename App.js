@@ -16,6 +16,7 @@ import {
 
 import MapView from 'react-native-maps'
 import { PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps';
+import BusTimingData from 'src/api/BusTimingData';
 
 const { width, height } = Dimensions.get('window');
 
